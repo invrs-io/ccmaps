@@ -73,7 +73,7 @@ def cmap_for_wavelength(
     color = rgb_for_wavelength(wavelength_nm=wavelength_nm)
     return colors.LinearSegmentedColormap.from_list(
         name=f"{int(wavelength_nm)}_{background_color}",
-        colors=[background_color, color],
+        colors=[background_color, color],  # type: ignore[arg-type]
         N=256,
     )
 
