@@ -6,7 +6,7 @@ Copyright (c) 2024 The INVRS-IO authors.
 import base64
 import pathlib
 import zlib
-from typing import Any, Tuple
+from typing import Any, Sequence
 
 import numpy as onp
 from matplotlib import colors
@@ -55,12 +55,26 @@ def rgb_for_wavelength(wavelength_nm: float) -> onp.ndarray[Any, Any]:
 
 def cmap_for_wavelength(
     wavelength_nm: float,
-    background_color: str | Tuple[float, float, float] = "k",
+    background_color: str | Sequence[float] = "k",
 ) -> colors.LinearSegmentedColormap:
-    """Generates a"""
+    """Generate a colormap for the specified wavelength.
+
+    The colormap varies between the background color, and the color associated with the
+    specified wavelength.
+
+    Args:
+        wavelength_nm: The wavelength, with values between 380 and 780 nanometers.
+        background_color: A color that can be understood by matplotlib, e.g. `"w"`,
+            `"k"`, or `(0.1, 0.1, 0.1)`.
+
+    Returns:
+        The generated colormap.
+    """
     color = rgb_for_wavelength(wavelength_nm=wavelength_nm)
     return colors.LinearSegmentedColormap.from_list(
-        "b", [background_color, color], N=256
+        name=f"{int(wavelength_nm)}_{background_color}",
+        colors=[background_color, color],
+        N=256,
     )
 
 
