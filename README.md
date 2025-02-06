@@ -11,8 +11,4 @@ pip install ccmaps
 ```
 
 ## Examples
-![wbgyr](https://github.com/mfschubert/ccmaps/blob/main/docs/img/wbgyr.png?raw=true)
-
-![wavelgnth-background-k](https://github.com/mfschubert/ccmaps/blob/main/docs/img/wavelength_background_k.png?raw=true)
-
-![wavelgnth-background-w](https://github.com/mfschubert/ccmaps/blob/main/docs/img/wavelength_background_w.png?raw=true)
+![cmaps](https://github.com/mfschubert/ccmaps/blob/main/docs/img/cmaps.png?raw=true)
