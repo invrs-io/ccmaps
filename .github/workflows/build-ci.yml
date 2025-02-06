@@ -49,6 +49,10 @@ jobs:
         run: |
           mypy src
 
+      - name: imports validation
+        run: |
+            find . -name "*.py" | xargs isort --profile black --check-only
+
       - name: darglint docstring validation
         run: |
           darglint src --strictness=short --ignore-raise=ValueError

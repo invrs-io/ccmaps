@@ -29,6 +29,7 @@ tests = [
 dev = [
     "bump-my-version",
     "darglint",
+    "isort",
     "matplotlib",
     "mypy",
     "pre-commit",
