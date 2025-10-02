@@ -10,7 +10,17 @@ from ccmaps import ccmaps
 
 class CustomCmapTest(unittest.TestCase):
     def test_wbgyr(self):
+        plt.imshow(onp.ones((10, 10)), cmap=ccmaps.WBGYR)
+
+    def test_wbgyr_callable(self):
         cmap = ccmaps.wbgyr()
+        plt.imshow(onp.ones((10, 10)), cmap=cmap)
+
+    def test_bkr(self):
+        plt.imshow(onp.ones((10, 10)), cmap=ccmaps.BKR)
+
+    def test_bkr_callable(self):
+        cmap = ccmaps.bkr()
         plt.imshow(onp.ones((10, 10)), cmap=cmap)
 
     @parameterized.expand(
