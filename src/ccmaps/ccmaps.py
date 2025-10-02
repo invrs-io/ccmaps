@@ -78,7 +78,35 @@ def cmap_for_wavelength(
     )
 
 
+WBGYR = colors.LinearSegmentedColormap.from_list(
+    name="wbgyr",
+    colors=onp.loadtxt(f"{_DATA_PATH}/wbgyr.txt", delimiter=","),
+)
+"""The white-blue-green-yellow-red colormap."""
+
+
 def wbgyr() -> colors.ListedColormap:
     """Returns the white-blue-yellow-green-red colormap."""
-    cmap_colors = onp.loadtxt(f"{_DATA_PATH}/wbgyr.txt", delimiter=",")
-    return colors.ListedColormap(cmap_colors)
+    return WBGYR
+
+
+BKR = colors.LinearSegmentedColormap.from_list(
+    name="bkr",
+    colors=onp.asarray(
+        [
+            [1.0, 1.0, 1.0],
+            [0.5, 0.5, 1.0],
+            [0.0, 0.0, 0.5],
+            [0.0, 0.0, 0.0],
+            [0.5, 0.0, 0.0],
+            [1.0, 0.5, 0.5],
+            [1.0, 1.0, 1.0],
+        ]
+    ),
+)
+"""The white-blue-black-red-white colormap."""
+
+
+def bkr():
+    """Returns the white-blue-black-red-white colormap."""
+    return BKR
