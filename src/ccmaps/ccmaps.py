@@ -85,7 +85,7 @@ WBGYR = colors.LinearSegmentedColormap.from_list(
 """The white-blue-green-yellow-red colormap."""
 
 
-def wbgyr() -> colors.ListedColormap:
+def wbgyr() -> colors.LinearSegmentedColormap:
     """Returns the white-blue-yellow-green-red colormap."""
     return WBGYR
 
@@ -107,6 +107,6 @@ BKR = colors.LinearSegmentedColormap.from_list(
 """The white-blue-black-red-white colormap."""
 
 
-def bkr():
+def bkr() -> colors.LinearSegmentedColormap:
     """Returns the white-blue-black-red-white colormap."""
     return BKR
