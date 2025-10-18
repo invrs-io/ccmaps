@@ -1,6 +1,6 @@
 """Defines several custom matplotlib colormaps.
 
-Copyright (c) 2024 The INVRS-IO authors.
+Copyright (c) 2025 invrs.io LLC
 """
 
 import base64
