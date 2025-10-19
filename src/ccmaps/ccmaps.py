@@ -4,15 +4,11 @@ Copyright (c) 2025 invrs.io LLC
 """
 
 import base64
-import pathlib
 import zlib
 from typing import Any, Sequence
 
 import numpy as onp
 from matplotlib import colors
-
-_DATA_PATH = f"{pathlib.Path(__file__).resolve().parent}/data"
-
 
 # Code is from https://github.com/rsmith-nl/wavelength_to_rgb.
 _CTBL = (
@@ -78,10 +74,18 @@ def cmap_for_wavelength(
     )
 
 
-WBGYR = colors.LinearSegmentedColormap.from_list(
-    name="wbgyr",
-    colors=onp.loadtxt(f"{_DATA_PATH}/wbgyr.txt", delimiter=","),
+values = onp.asarray([0.000, 0.190, 0.397, 0.603, 0.810, 1.000])
+rgb = onp.asarray(
+    [
+        [1.000, 1.000, 1.000],
+        [0.730, 0.830, 0.955],
+        [0.400, 1.000, 0.400],
+        [1.000, 1.000, 0.000],
+        [1.000, 0.000, 0.000],
+        [0.600, 0.200, 0.000],
+    ]
 )
+WBGYR = colors.LinearSegmentedColormap.from_list("wbgyr", list(zip(values, rgb)))
 """The white-blue-green-yellow-red colormap."""
 
 
