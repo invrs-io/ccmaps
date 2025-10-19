@@ -10,7 +10,6 @@ from typing import Any, Sequence
 import numpy as onp
 from matplotlib import colors
 
-
 # Code is from https://github.com/rsmith-nl/wavelength_to_rgb.
 _CTBL = (
     b"eNrV0ltr0AUAxuHn1rqoiAqSiA6EEJ3ogBUJeeFFRUdJOjOyWau1bLZpGztnM1oyy"
