@@ -1,6 +1,6 @@
 """ccmaps: A few custom colormaps for matplotlib."""
 
-__version__ = "v0.1.0"
+__version__ = "v0.2.0"
 __author__ = "Martin F. Schubert <mfschubert@gmail.com>"
 
 from .ccmaps import BKR as BKR
