@@ -10,7 +10,8 @@ from typing import Any, Sequence
 import numpy as onp
 from matplotlib import colors
 
-# Code is from https://github.com/rsmith-nl/wavelength_to_rgb.
+# Encoded RGB values for wavelengths between 380 nm and 780 nm.
+# https://github.com/rsmith-nl/wavelength_to_rgb.
 _CTBL = (
     b"eNrV0ltr0AUAxuHn1rqoiAqSiA6EEJ3ogBUJeeFFRUdJOjOyWau1bLZpGztnM1oyy"
     b"2yYmcmMETPNlixNVpmssobKMJuYDVnNGksz0zTe5C9BXyF4v8Dz4y1RMlPpLGVlKs"
@@ -33,19 +34,19 @@ _CTBL = zlib.decompress(base64.b64decode(_CTBL))
 
 
 def rgb_for_wavelength(wavelength_nm: float) -> onp.ndarray[Any, Any]:
-    """Converts a wavelength between 380 and 780 nm to an RGB color tuple.
+    """Generates an `(r, g, b)` color tuple for the specified wavelength.
 
     Args:
-        wavelength_nm: WThe wavelength in nanometers.
+        wavelength_nm: The wavelength in nanometers.
 
     Returns:
-        A 3-tuple (red, green, blue) of integers in the range 0-255.
+        The `(r, g, b)` tuple of floats, each in the range `[0, 1]`.
     """
-    wavelength_nm = int(round(wavelength_nm))
+    wavelength_nm = int(onp.around(wavelength_nm))
     if wavelength_nm < 380 or wavelength_nm > 780:
         raise ValueError(
-            f"Wavelength is out of range, must be between 380 and 780 nm but got a "
-            f"value of {wavelength_nm}."
+            f"`wavelength_nm` is out of range, must be between 380 and "
+            f"780 nm but got a value of {wavelength_nm}."
         )
     idx = (wavelength_nm - 380) * 3
     color_str = _CTBL[idx : idx + 3]
