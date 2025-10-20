@@ -36,14 +36,17 @@ def rgb_for_wavelength(wavelength_nm: float) -> onp.ndarray[Any, Any]:
     """Converts a wavelength between 380 and 780 nm to an RGB color tuple.
 
     Args:
-        wavelength_nm: Wavelength in nanometers. It is rounded to the nearest integer.
+        wavelength_nm: WThe wavelength in nanometers.
 
     Returns:
         A 3-tuple (red, green, blue) of integers in the range 0-255.
     """
     wavelength_nm = int(round(wavelength_nm))
     if wavelength_nm < 380 or wavelength_nm > 780:
-        raise ValueError("wavelength out of range")
+        raise ValueError(
+            f"Wavelength is out of range, must be between 380 and 780 nm but got a "
+            f"value of {wavelength_nm}."
+        )
     idx = (wavelength_nm - 380) * 3
     color_str = _CTBL[idx : idx + 3]
     return onp.asarray([int(i) for i in color_str]) / 255
@@ -74,8 +77,8 @@ def cmap_for_wavelength(
     )
 
 
-values = onp.asarray([0.000, 0.190, 0.397, 0.603, 0.810, 1.000])
-rgb = onp.asarray(
+_wbgyr_values = onp.asarray([0.000, 0.190, 0.397, 0.603, 0.810, 1.000])
+_wbgyr_rgb = onp.asarray(
     [
         [1.000, 1.000, 1.000],
         [0.730, 0.830, 0.955],
@@ -85,7 +88,10 @@ rgb = onp.asarray(
         [0.600, 0.200, 0.000],
     ]
 )
-WBGYR = colors.LinearSegmentedColormap.from_list("wbgyr", list(zip(values, rgb)))
+WBGYR = colors.LinearSegmentedColormap.from_list(
+    name="wbgyr",
+    colors=list(zip(_wbgyr_values, _wbgyr_rgb)),
+)
 """The white-blue-green-yellow-red colormap."""
 
 
