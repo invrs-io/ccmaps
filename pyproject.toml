@@ -1,12 +1,12 @@
 [project]
 
 name = "ccmaps"
-version = "v0.2.0"
+version = "v0.2.1"
 description = "A few custom matplotlib colormaps."
 keywords = ["matplotlib", "color"]
 readme = "README.md"
 requires-python = ">=3.7"
-license = {file = "LICENSE"}
+license = "MIT"
 
 authors = [
     {name = "Martin Schubert", email = "mfschubert@gmail.com"},
